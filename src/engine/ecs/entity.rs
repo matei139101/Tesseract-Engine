@@ -1,6 +1,6 @@
 /// An unique identifier for an object in the simulation.
 ///
-///Entity IDs should never constructed directly - always obatain them through ['']
+/// Entity IDs should never constructed directly - always obatain them through ['']
 #[derive(PartialEq, Eq, Hash, Copy, Clone)]
 pub struct Entity {
     id: u32,
