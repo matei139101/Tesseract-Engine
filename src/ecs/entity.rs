@@ -1,9 +1,9 @@
 /// An unique identifier for an object in the simulation.
 ///
 ///Entity IDs should never constructed directly - always obatain them through ['']
-#[derive(PartialEq, Eq, Hash)]
+#[derive(PartialEq, Eq, Hash, Copy, Clone)]
 pub struct Entity {
-    id: u32
+    id: u32,
 }
 
 /// Handles allocation, freeing and recycling of ['Entity'] IDs.
@@ -22,7 +22,7 @@ impl EntityAllocator {
     /// Returns an ['Entity'] with a unique ID.
     pub fn alloc(&mut self) -> Entity {
         if let Some(id) = self.free.pop() {
-            Entity {id}
+            Entity { id }
         } else {
             let id = self.next;
             self.next += 1;

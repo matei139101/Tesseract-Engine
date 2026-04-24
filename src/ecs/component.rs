@@ -1,13 +1,15 @@
-use std::collections::HashMap;
 use super::Entity;
+use std::collections::HashMap;
 
 pub struct ComponentStorage<T> {
-    data: HashMap<Entity, T>
+    data: HashMap<Entity, T>,
 }
 
-impl <T> ComponentStorage<T> {
+impl<T> ComponentStorage<T> {
     pub fn new() -> Self {
-        Self { data: HashMap::new() }
+        Self {
+            data: HashMap::new(),
+        }
     }
 
     pub fn insert(&mut self, entity: Entity, value: T) {
@@ -26,7 +28,7 @@ impl <T> ComponentStorage<T> {
         self.data.remove(&entity);
     }
 
-    pub fn iter(&self) ->  {
-        self.data.iter()
+    pub fn iter(&self) -> impl Iterator<Item = (Entity, &T)> {
+        self.data.iter().map(|(e, c)| (*e, c))
     }
 }

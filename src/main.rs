@@ -2,6 +2,7 @@
 
 mod ecs;
 mod prelude;
+mod services;
 
 use winit::application::ApplicationHandler;
 use winit::event::WindowEvent;
@@ -15,8 +16,7 @@ struct App {
 
 impl ApplicationHandler for App {
     fn resumed(&mut self, event_loop: &ActiveEventLoop) {
-        let window_attrs = Window::default_attributes()
-            .with_title("ECS Engine");
+        let window_attrs = Window::default_attributes().with_title("ECS Engine");
         self.window = Some(event_loop.create_window(window_attrs).unwrap());
     }
 
